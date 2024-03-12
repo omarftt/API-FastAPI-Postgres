@@ -5,8 +5,8 @@
 ## 1. Getting started
 
 This process required:
-- [Python](https://github.com/pyenv/pyenv) 
-- [Docker](https://github.com/pyenv/pyenv) 
+- [Python]([https://github.com/pyenv/pyenv](https://www.python.org/)) 
+- [Docker]([https://github.com/pyenv/pyenv](https://www.docker.com/)) 
 
 To check your python version uses this command:
 ```bash
@@ -33,6 +33,11 @@ Install all packages required
 ```bash
 cd app
 pip install -r requirements.txt
+```
+
+Pull required Docker images
+```bash
+docker pull postgres
 ```
 
 ## 4. Run the API server using docker-compose
