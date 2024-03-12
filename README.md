@@ -1,5 +1,7 @@
 # API FastAPI - Postgres
 
+![Docs](images/Docs.png)
+
 ## 1. Getting started
 
 This process required:
@@ -41,3 +43,12 @@ cd ..
 docker-compose up
 ```
 Docker compose will up 3 services: FastAPI, Postgres, and PGAdmin. Use user and password configure in docker-compose.yml file
+
+## 5. Testing
+To evaluate the application, you can insert dummy values into the Postgres database (users table). Execute the following command:
+
+```bash
+bash init_db.sh
+```
+
+To test this API, you could use FastAPI Docs, Postman o CuRL.
