@@ -1,0 +1,37 @@
+version : "3.8"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=user_db
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+
+  api:
+    build:
+      context: ./app  # Ruta al directorio que contiene el Dockerfile
+      dockerfile: Dockerfile  # Nombre del Dockerfile (puede ser omitido si el nombre es Dockerfile por defecto)
+    image: fastapiuser
+    environment:
+      - DATABASE_URL=postgresql://root:password@postgres:5432/user_db
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8001:8000"
